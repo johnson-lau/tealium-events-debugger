@@ -1,4 +1,4 @@
-# Tealium Events Debugger
+# Tealium Events Debugger - Chrome Extension
 
 ![image](https://github.com/johnson-lau/tealium-events-debugger/assets/101210653/b984cdf4-2b6b-4aa5-8763-24ee0e2e61dc)
 
