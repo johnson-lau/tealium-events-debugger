@@ -17,3 +17,7 @@ npm run build
 5. Tealium events from all websites will appear in the side panel.
 
 💡 You can also open the side panel by pressing `Ctrl+B` (Windows) or `Cmd+B` (macOS).
+
+## Usage
+
+Note that the extension only shows captured events after it is opened -- it does not show previously emitted events.
