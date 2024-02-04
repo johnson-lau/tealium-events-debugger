@@ -1,0 +1,20 @@
+.navbar {
+  background: rgb(0, 42, 66);
+  padding: 0.8em 1.2em;
+  color: #fff;
+  font-size: 0.7em;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 14px;
+
+  .button {
+    color: #ffffffc2;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
