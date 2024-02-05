@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { Event } from "../event/event";
 import type { Log } from "../../lib/events";
+import { Event } from "../event/event";
 
 type EventsProps = {
   logs: Log[];

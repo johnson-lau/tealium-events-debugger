@@ -3,12 +3,27 @@ import { Events } from "./components/events/events";
 import { NavBar } from "./components/nav-bar/nav-bar";
 import type { Log } from "./lib/events";
 import { parsePayload } from "./lib/events";
+import { FiltersProvider } from "./lib/filters-context/filters-context";
+import { useFilters } from "./lib/filters-context/use-filters";
 import sampleData from "./lib/sample-data";
 
 function App() {
   const isChromeExtension = !!chrome.runtime;
 
+  const { addFilterOptions } = useFilters();
   const [logs, setLogs] = useState<Log[]>([]);
+
+  const addLog = useCallback(
+    (data: Log | undefined) => {
+      if (!data) {
+        return;
+      }
+
+      setLogs([data, ...logs]);
+      addFilterOptions(data);
+    },
+    [logs, addFilterOptions]
+  );
 
   //Handles tealium-event messages sent from service-worker. These are sent
   //upon matching network requests.
@@ -24,13 +39,11 @@ function App() {
         const payload = data.requestBody?.formData?.data ?? [];
         if (payload.length > 0) {
           const data = parsePayload(payload[0]);
-          if (data) {
-            setLogs([data, ...logs]);
-          }
+          addLog(data);
         }
       }
     },
-    [logs, setLogs]
+    [addLog]
   );
 
   const handleClearLogs = () => {
@@ -43,7 +56,7 @@ function App() {
       return;
     }
     data.payload.post_time = Date.now();
-    setLogs([data, ...logs]);
+    addLog(data);
   };
 
   useEffect(() => {
@@ -70,4 +83,12 @@ function App() {
   );
 }
 
-export default App;
+function AppWithProviders() {
+  return (
+    <FiltersProvider defaultFilters={{ reg_user_id: true }}>
+      <App />
+    </FiltersProvider>
+  );
+}
+
+export default AppWithProviders;
