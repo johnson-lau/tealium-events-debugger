@@ -14,18 +14,18 @@ function NavBar({ onClear, onAdd, showAddSample }: NavBarProps) {
   return (
     <nav className={classes.navbar}>
       <span>
+        <Filters />
+      </span>
+      <span>
         {showAddSample && (
           <IconButton
             className={classes.button}
             onClick={onAdd}
             title="Add sample event"
             icon={faAdd}
-            size="1x"
+            size="xl"
           />
         )}
-      </span>
-      <span>
-        <Filters />
 
         <Separator orientation="vertical" className="opacity-20" />
 
@@ -34,7 +34,7 @@ function NavBar({ onClear, onAdd, showAddSample }: NavBarProps) {
           onClick={onClear}
           title="Clear events"
           icon={faBan}
-          size="lg"
+          size="xl"
         />
       </span>
     </nav>
