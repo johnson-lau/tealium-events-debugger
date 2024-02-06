@@ -7,6 +7,8 @@ import { FiltersProvider } from "./lib/filters-context/filters-context";
 import { useFilters } from "./lib/filters-context/use-filters";
 import sampleData from "./lib/sample-data";
 
+const MAX_LOGS = 100;
+
 function App() {
   const isChromeExtension = !!chrome.runtime;
 
@@ -19,7 +21,7 @@ function App() {
         return;
       }
 
-      setLogs([data, ...logs]);
+      setLogs([data, ...logs].slice(0, MAX_LOGS));
       addFilterOptions(data);
     },
     [logs, addFilterOptions]
@@ -71,7 +73,7 @@ function App() {
   }, [isChromeExtension, handleMessage]);
 
   return (
-    <>
+    <div className="font-mono">
       <NavBar
         onClear={handleClearLogs}
         onAdd={handleAddSample}
@@ -79,7 +81,7 @@ function App() {
       />
 
       <Events logs={logs} />
-    </>
+    </div>
   );
 }
 

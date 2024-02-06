@@ -1,4 +1,3 @@
-import { FilterOption } from "./filters-context";
 import React, {
   PropsWithChildren,
   useCallback,

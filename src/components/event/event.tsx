@@ -69,4 +69,4 @@ function Event({ data }: EventProps) {
   );
 }
 
-export { Event };
+export default Event;

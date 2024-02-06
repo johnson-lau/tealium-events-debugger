@@ -34,7 +34,7 @@ function NavBar({ onClear, onAdd, showAddSample }: NavBarProps) {
           onClick={onClear}
           title="Clear events"
           icon={faBan}
-          size="1x"
+          size="lg"
         />
       </span>
     </nav>
